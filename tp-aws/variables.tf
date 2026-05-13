@@ -46,3 +46,33 @@ variable "my_ip" {
   description = "Votre IP publique pour SSH (format x.x.x.x/32)"
   type        = string
 }
+
+variable "private_subnet_cidr" {
+  description = "CIDR du subnet privé (RDS)"
+  type        = string
+  default     = "10.0.2.0/24"
+}
+
+variable "private_subnet_cidr_2" {
+  description = "CIDR du second subnet privé (RDS - 2ème AZ)"
+  type        = string
+  default     = "10.0.3.0/24"
+}
+
+variable "db_name" {
+  description = "Nom de la base de données"
+  type        = string
+  default     = "devopsdb"
+}
+
+variable "db_username" {
+  description = "Utilisateur PostgreSQL"
+  type        = string
+  default     = "dbadmin"
+}
+
+variable "db_password" {
+  description = "Mot de passe PostgreSQL"
+  type        = string
+  sensitive   = true
+}
