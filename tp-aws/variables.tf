@@ -76,3 +76,9 @@ variable "db_password" {
   type        = string
   sensitive   = true
 }
+
+variable "public_subnet_cidr_2" {
+  description = "CIDR du second subnet public (ALB - 2ème AZ)"
+  type        = string
+  default     = "10.0.4.0/24"
+}

@@ -28,3 +28,8 @@ output "db_endpoint" {
   value       = aws_db_instance.main.endpoint
   sensitive   = true
 }
+
+output "alb_dns_name" {
+  description = "DNS public de l'Application Load Balancer"
+  value       = aws_lb.main.dns_name
+}
