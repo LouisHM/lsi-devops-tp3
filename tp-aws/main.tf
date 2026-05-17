@@ -124,7 +124,7 @@ resource "aws_key_pair" "deployer" {
 
 resource "aws_instance" "web" {
   ami                    = data.aws_ami.ubuntu.id
-  instance_type          = var.instance_type
+  instance_type          = local.effective_instance_type
   subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.web.id]
   key_name               = aws_key_pair.deployer.key_name
@@ -232,7 +232,7 @@ resource "aws_db_instance" "main" {
   vpc_security_group_ids  = [aws_security_group.db.id]
   publicly_accessible     = false
   skip_final_snapshot     = true
-  backup_retention_period = 1
+  backup_retention_period = local.effective_db_backup_days
 
   tags = { Name = "${var.project_name}-db" }
 }
